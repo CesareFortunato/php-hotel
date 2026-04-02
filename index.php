@@ -57,6 +57,8 @@
 
     ?>
 
+    <?php $stelle = $_GET['vote'] ?>
+
     <form action="./index.php" method="GET">
         Vote: <input type="text" name="vote"><button type="submit" name="vote">invia voto</button><br>
 
@@ -73,6 +75,7 @@
                     <th scope="col">NAME</th>
                     <th scope="col">DESCRIPTION</th>
                     <th scope="col">VOTE</th>
+                    <th scope="col">PARKING</th>
                     <th scope="col">DISTANCE TO CENTER</th>
                 </tr>
             </thead>
@@ -81,6 +84,7 @@
                     <td><?php echo $hotel['name']; ?></td>
                     <td><?php echo $hotel['description']; ?></td>
                     <td><?php echo $hotel['vote']; ?></td>
+                    <td><?php echo $hotel['parking'] ? 'presente' : 'assente'; ?></td>
                     <td><?php echo $hotel['distance_to_center']; ?></td>
                     </tr>
                 <?php } ?>
