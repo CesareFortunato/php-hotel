@@ -57,12 +57,19 @@
 
     ?>
 
-    <?php $stelle = $_GET['vote'] ?>
+    <?php if (isset($_GET['parking']) && $_GET['parking'] == 'on') {
+        echo "parcheggi richiesti";
+    }
+
+    ?>
+
 
     <form action="./index.php" method="GET">
-        Vote: <input type="text" name="vote"><button type="submit" name="vote">invia voto</button><br>
 
-        <button name="parking" type="submit">Ha il parcheggio?</button><br>
+        <input type="checkbox" , id="parking" name="parking">
+        <label for="parking">parcheggio</label>
+
+        <button>Filtra</button>
 
 
 
