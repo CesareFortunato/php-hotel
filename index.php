@@ -57,8 +57,12 @@
 
     ?>
 
-    <?php if (isset($_GET['parking']) && $_GET['parking'] == 'on') {
-        echo "parcheggi richiesti";
+    <?php
+
+    $parking_request = false;
+
+    if (isset($_GET['parking']) && $_GET['parking'] == 'on') {
+        $parking_request = true;
     }
 
     ?>
@@ -87,7 +91,17 @@
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($hotels as $hotel) { ?>
+                <?php foreach ($hotels as $hotel) {
+
+                    if ($parking_request) {
+
+                        if (!$hotel['parking']) {
+                            continue;
+                        }
+
+                    }
+
+                    ?>
                     <td><?php echo $hotel['name']; ?></td>
                     <td><?php echo $hotel['description']; ?></td>
                     <td><?php echo $hotel['vote']; ?></td>
