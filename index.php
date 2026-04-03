@@ -65,6 +65,13 @@
         $parking_request = true;
     }
 
+
+    $minimum_vote = 0;
+    if (isset($_GET['minimum_vote']) && is_numeric($_GET['minimum_vote']) && $_GET['minimum_vote'] > 0 && $_GET['minimum_vote'] < 10) {
+        $minimum_vote = (int) $_GET['minimum_vote'];
+    }
+
+
     ?>
 
 
@@ -74,6 +81,12 @@
         <label for="parking">parcheggio</label>
 
         <button>Filtra</button>
+
+
+        <div class="form-controll">
+            <input id="minimum_vote" name="minimum_vote" type="number" min="0" max="5">
+            <label for="">Voto minimo</label>
+        </div>
 
 
 
@@ -99,6 +112,10 @@
                             continue;
                         }
 
+                    }
+
+                    if ($hotel['vote'] < $minimum_vote) {
+                        continue;
                     }
 
                     ?>
